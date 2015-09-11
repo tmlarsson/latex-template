@@ -110,5 +110,9 @@ echo "Open file? [yes/no]"
 read -r openFile
 
 if [[ $openFile == "yes" || $openFile == "y" ]]; then
-    open "${ARGUMENT}.pdf"
+	if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        	xdg-open "${ARGUMENT}.pdf"
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+        	open "${ARGUMENT}.pdf"
+    	fi
 fi
