@@ -1,0 +1,112 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{geometry}                  						% Page geometry
+\usepackage{graphicx,
+			epstopdf,
+			float,
+			subcaption}							   			% Figures
+\usepackage[section]{placeins}								% Gives \FloatBarrier
+\usepackage{amsmath,
+			amssymb,
+            amsthm,
+			amsfonts,
+			mathrsfs,
+			dsfont,
+			esint,
+            mathtools}									 	% Mathematics
+\usepackage{enumerate}                 						% Lists
+\usepackage{fancyhdr}                  						% Header and footer
+\usepackage{booktabs,
+			multirow}										% Tables
+\usepackage{appendix}										% Appendices
+\usepackage{hyperref}										% Links
+\usepackage{csquotes}										% Quotes. For biblatex
+\usepackage{color}											% Colour
+\usepackage{pdflscape}										% Rotate the whole document
+\usepackage{multicol}										% Multiple columns on one page
+\usepackage{pgfplots}										% Create figures
+\usepackage{lmodern}										% More options for fonts
+\usepackage{newfloat}										% For minted
+\usepackage[newfloat]{minted}								% Insert code
+\usepackage[backend=biber,
+            style=numeric-comp,
+            language=auto,
+            firstinits = false,
+            alldates=iso8601,
+            sortcites=true,
+            hyperref=true,
+            url=true,
+            isbn=true]{biblatex}
+
+\addbibresource{refs.bib}                                   % File with bibliography database
+\input{settings.tex}										% File with settings
+
+\begin{document}
+	\title{Name of Document}
+	\author{Author Name (\mail{e-mail@address.com})}
+	\date{\today}
+
+    % Author and title as "variables" for use in headers
+    \makeatletter
+    \let\headerauthor\@author
+    \let\headertitle\@title
+    \makeatother
+
+	\begin{titlepage}
+		\hypersetup{pageanchor=false} % Fixes a problem with hyperref complaining about pagenumbering on the title page
+		\pagenumbering{gobble}
+		\maketitle 
+		\thispagestyle{fancy}
+		\headheight 35pt
+		\rhead{\small\today}
+		\lhead{\small Department or Institution\\
+		Name of University}
+		
+		\begin{table}[b]	
+			\begin{center}
+				\begin{tabular}{rl}
+					\multicolumn{2}{c}{\textbf{Name of Course}}\\
+					Tutors: & Tutor 1\\
+					& Tutor 2\\
+                    & Tutor 3
+				\end{tabular}
+			\end{center}
+		\end{table}
+	\end{titlepage}
+\clearpage
+\hypersetup{pageanchor=true} % Fixes a problem with hyperref complaining about pagenumbering on the title page
+	\pagestyle{fancy}
+	\headheight 36pt 
+	\rhead{\small \headertitle\\\today}
+	\lhead{\small \headerauthor}
+	\cfoot{\thepage}
+	\tableofcontents
+\clearpage
+	\pagenumbering{arabic}
+    \section{Section}
+        \label{sec:section}
+\clearpage
+    \section{References}
+        \label{sec:references}
+        \setcounter{biburllcpenalty}{9000}
+        \setcounter{biburlucpenalty}{9000}
+        \printbibliography[heading=none]
+\clearpage
+	\begin{appendices}
+		% Fig. A.1, Eq. (A.1)...
+		\renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
+		\setcounter{equation}{0}
+		\renewcommand{\thefigure}{\Alph{section}.\arabic{figure}}
+		\setcounter{figure}{0}
+		\renewcommand{\thetable}{\Alph{section}.\arabic{table}}
+		\setcounter{table}{0}
+		\renewcommand{\thelisting}{\Alph{section}.\arabic{listing}}
+		\setcounter{listing}{0}
+		\pagenumbering{roman}
+        \section{Appendix -- Name of Appendix}
+            \label{sec:appndixname}
+    \end{appendices}
+\end{document}
