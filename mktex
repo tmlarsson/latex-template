@@ -1,0 +1,118 @@
+#! /bin/bash
+clear
+
+if [ -z "$1" ]; then
+    echo "No input..."
+    exit 1
+fi
+
+while test $# -gt 0; do
+        case "$1" in
+                -h|--help)
+                        echo "$package - Compile LaTeX documents with pdfLaTeX"
+                        echo " "
+                        echo "$package [options] application [arguments]"
+                        echo " "
+                        echo "options:"
+                        echo "-h, --help                	show brief help"
+                        echo "-b,       			compile using biber"
+                        exit 0
+                        ;;
+                -b)
+                        shift
+                        if ! test $# -gt 0; then
+									echo "No input argument - biber"
+									exit 1
+								else
+									ARGUMENT="$1"
+									biber=1
+									if [ ! -f "${ARGUMENT}.tex" ]; then
+										echo "No such file exist"
+										exit 1	
+									fi
+									echo -n "Compiling using pdfLaTeX and biber... "
+								fi
+                        shift
+                        ;;
+                *)
+                       	
+						biber=0 
+						ARGUMENT="$1"
+						if [ ! -f "${ARGUMENT}.tex" ]; then
+							echo "No such file exist"
+							exit 2	
+                        fi
+						echo -n "Compile using only PDFLaTeX... "
+                        break
+						;;
+        esac
+done
+pdflatex -shell-escape -interaction=nonstopmode -file-line-error "${ARGUMENT%.tex}" | grep something
+# grep somthing is just to kill the output.
+
+if [ "$biber" == 1 ]; then
+	biber "$ARGUMENT"  | grep something
+fi
+
+
+result=$(max_print_line=2048 pdflatex -shell-escape -interaction=nonstopmode -file-line-error "${ARGUMENT%.tex}" | grep -i "^.*:[0-9]*:.*\|warning.*$") 
+
+if [ -z "$result" ]; then
+    echo '[OK]'
+else
+    echo ""
+    echo ""
+    echo "$result"
+    echo ""
+fi
+
+# Remove unnessesary files.
+
+if [ -f "${ARGUMENT}.log" ]; then
+	rm *.log
+fi
+if [ -f "${ARGUMENT}.lof" ]; then
+	rm *.lof
+fi
+if [ -f "${ARGUMENT}.blg" ]; then
+	rm *.blg
+fi
+if [ -f "${ARGUMENT}.toc" ]; then
+	rm *.toc
+fi
+if [ -f "${ARGUMENT}.out" ]; then
+	rm *.out
+fi
+
+if [ -f "${ARGUMENT}.bbl" ]; then
+	rm *.bbl
+fi
+if [ -f "${ARGUMENT}.aux" ]; then
+	rm *.aux
+fi
+if [ -f "${ARGUMENT}.bcf" ]; then
+	rm *.bcf
+fi
+if [ -f "${ARGUMENT}.run.xml" ]; then
+	rm *.run.xml
+fi
+if [ -f "${ARGUMENT}.tex.bak" ]; then
+	rm *.tex.bak
+fi
+if [ -f "${ARGUMENT}.fls" ]; then
+	rm *.fls
+fi
+if [ -f "${ARGUMENT}.fdb_latexmk" ]; then
+	rm *.fdb_latexmk
+fi
+
+echo "Open file? [yes/no]"
+read -r openFile
+
+if [[ $openFile == "yes" || $openFile == "y" ]]; then
+	if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        	xdg-open "${ARGUMENT}.pdf"
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+        	open "${ARGUMENT}.pdf"
+    	fi
+fi
