@@ -52,7 +52,7 @@ if [ "$HELP" == true ]; then
     echo "mktex - Compiles LaTeX documents with pdfLaTeX"
     echo " "
     echo "Usage example: [possible flags]"
-    echo "mktex -f filename [-b -c -m]"
+    echo "mktex filename [-b -c -m]"
     echo " "
     echo "options:"
     echo "-h, --help            show brief help"
