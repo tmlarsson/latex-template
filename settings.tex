@@ -114,13 +114,16 @@
 			
 % Definitions of commands
 \newcommand{\mail}[1]{\href{mailto:#1}{\nolinkurl{#1}}} % Email addresses as links
-\newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}} % Vectors (\boldsymbol for Greek letters}
-\newcommand{\uvect}[1]{\hat{\boldsymbol{\mathbf{#1}}}} % Unitvectors (\boldsymbol for Greek letters}
+\newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}} % Vectors (\boldsymbol for Greek letters)
+\newcommand{\uvect}[1]{\hat{\boldsymbol{\mathbf{#1}}}} % Unitvectors (\boldsymbol for Greek letters)
 \newcommand{\dd}[0]{\mathrm{d}} % Differential d
 \newcommand{\pd}[0]{\partial} % Partial differential d
 \newcommand{\ddf}[3]{\frac{\dd^{#1} #2}{\dd #3^{#1}}} % Derivatives as fractions
 \newcommand{\pdf}[3]{\frac{\pd^{#1} #2}{\pd #3^{#1}}} % Partial derivatives as fractions
 \newcommand{\matr}[1]{#1} % Matriser
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert} % Norm. \norm{}. \norm*{} adjusts the size of the bars
+\DeclarePairedDelimiter{\innerprod}{\langle}{\rangle} % Inner product. \innerprod{}. \innerprod*{} adjusts the size of the bars
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % Absolute value \abs{}. \abs*{} adjusts the size of the bars
 \newtheorem{theorem}{Theorem} % \begin{theorem}[Name of Theorem]
 
 % Redefine \left och \right in order to make them look nicer when used in functions
