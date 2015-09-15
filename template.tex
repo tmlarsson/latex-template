@@ -40,8 +40,15 @@
             hyperref=true,
             url=true,
             isbn=true]{biblatex}
+\makeatletter
+    \@ifpackageloaded{biblatex}{\def\biblatexloaded{true}}{\def\biblatexloaded{false}}
+    \@ifpackageloaded{minted}{\def\mintedloaded{true}}{\def\mintedloaded{false}}
+\makeatother
 
-\addbibresource{refs.bib}           % File with bibliography database
+\ifx\biblatexloaded{true}
+    \addbibresource{refs.bib}       % File with bibliography database
+\fi
+
 \input{settings.tex}                % File with settings
 
 \begin{document}
@@ -91,9 +98,11 @@
 \clearpage
     \section{References}
         \label{sec:references}
-        \setcounter{biburllcpenalty}{9000}
-        \setcounter{biburlucpenalty}{9000}
-        \printbibliography[heading=none]
+        \ifx\biblatexloaded{true}
+            \setcounter{biburllcpenalty}{9000}
+            \setcounter{biburlucpenalty}{9000}
+            \printbibliography[heading=none]
+        \fi
 \clearpage
     \begin{appendices}
         % Fig. A.1, Eq. (A.1)...
@@ -103,8 +112,10 @@
         \setcounter{figure}{0}
         \renewcommand{\thetable}{\Alph{section}.\arabic{table}}
         \setcounter{table}{0}
-        \renewcommand{\thelisting}{\Alph{section}.\arabic{listing}}
-        \setcounter{listing}{0}
+        \ifx\mintedloaded{true}
+            \renewcommand{\thelisting}{\Alph{section}.\arabic{listing}}
+            \setcounter{listing}{0}
+        \fi
         \pagenumbering{roman}
         \section{Appendix -- Name of Appendix}
             \label{sec:appndixname}
