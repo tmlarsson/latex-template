@@ -40,14 +40,17 @@
             hyperref=true,
             url=true,
             isbn=true]{biblatex}
+
 \makeatletter
-    \@ifpackageloaded{biblatex}{\def\biblatexloaded{true}}{\def\biblatexloaded{false}}
-    \@ifpackageloaded{minted}{\def\mintedloaded{true}}{\def\mintedloaded{false}}
+    \newtoggle{biblatexloaded}
+    \newtoggle{mintedloaded}
+    \@ifpackageloaded{biblatex}{\toggletrue{biblatexloaded}}{\togglefalse{biblatexloaded}}
+    \@ifpackageloaded{minted}{\toggletrue{mintedloaded}}{\togglefalse{mintedloaded}}
 \makeatother
 
-\ifx\biblatexloaded{true}
+\iftoggle{biblatexloaded}{
     \addbibresource{refs.bib}       % File with bibliography database
-\fi
+}
 
 \input{settings.tex}                % File with settings
 
@@ -83,7 +86,7 @@
             \end{center}
         \end{table}
     \end{titlepage}
-\clearpage
+    \clearpage
     \hypersetup{pageanchor=true} % Fixes a problem with hyperref complaining about pagenumbering on the title page
     \pagestyle{fancy}
     \headheight 36pt 
@@ -91,19 +94,19 @@
     \lhead{\small \headerauthor}
     \cfoot{\thepage}
     \tableofcontents
-\clearpage
+    \clearpage
     \pagenumbering{arabic}
     \section{Section}
         \label{sec:section}
-\clearpage
+    \clearpage
     \section{References}
         \label{sec:references}
-        \ifx\biblatexloaded{true}
+        \iftoggle{biblatexloaded}{
             \setcounter{biburllcpenalty}{9000}
             \setcounter{biburlucpenalty}{9000}
             \printbibliography[heading=none]
-        \fi
-\clearpage
+        }
+    \clearpage
     \begin{appendices}
         % Fig. A.1, Eq. (A.1)...
         \renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
@@ -112,10 +115,10 @@
         \setcounter{figure}{0}
         \renewcommand{\thetable}{\Alph{section}.\arabic{table}}
         \setcounter{table}{0}
-        \ifx\mintedloaded{true}
+        \iftoggle{mintedloaded}{
             \renewcommand{\thelisting}{\Alph{section}.\arabic{listing}}
             \setcounter{listing}{0}
-        \fi
+        }
         \pagenumbering{roman}
         \section{Appendix -- Name of Appendix}
             \label{sec:appndixname}

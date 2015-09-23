@@ -1,13 +1,8 @@
-\makeatletter
-    \@ifpackageloaded{biblatex}{\def\biblatexloaded{true}}{\def\biblatexloaded{false}}
-    \@ifpackageloaded{minted}{\def\mintedloaded{true}}{\def\mintedloaded{false}}
-\makeatother
-
 %% Pgfplots
 \pgfplotsset{compat=1.10} % Compability sversion
 
 %% Biblatex
-\ifx\biblatexloaded{true}
+\iftoggle{biblatexloaded}{
     % Surname first
     \DeclareNameAlias{sortname}{last-first}
     \DeclareNameAlias{default}{last-first}
@@ -16,9 +11,10 @@
 
     % Separate multiple references with ;
     \renewcommand\multicitedelim{\addsemicolon\space}
-\fi
+}
+
 %% Minted
-\ifx\mintedloaded{true}
+\iftoggle{mintedloaded}{
     % C
     \newmintedfile{c}{fontfamily=tt,
                         fontsize=\footnotesize,
@@ -98,7 +94,7 @@
                                     fontsize=\normalsize} %\minline{}
 
     \SetupFloatingEnvironment{listing}{name=Code} % Shows "Code" in captions
-\fi
+}
 
 %% Misc
 % Captions of floats
