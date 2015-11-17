@@ -1,5 +1,15 @@
 %% Pgfplots
-\pgfplotsset{compat=1.10} % Compability sversion
+\pgfplotsset{compat=newest,scaled ticks = false,
+            tick label style={/pgf/number format/fixed},
+            /pgf/number format/1000 sep={}}
+%\usetikzlibrary{external}
+%\tikzexternalize
+%\tikzsetexternalprefix{tikz/}
+
+%% Siunitx
+\sisetup{exponent-product=\cdot, % Use \cdot instead of \times as replacement for 10-exponentials
+        output-complex-root=\ensuremath{i}, % Normal math-i instead of \mathrm{i},
+        group-separator = {}} % Don't separate thousands
 
 %% Biblatex
 \iftoggle{biblatexloaded}{
