@@ -1,0 +1,137 @@
+%% Pgfplots
+\pgfplotsset{compat=newest,scaled ticks = false,
+            tick label style={/pgf/number format/fixed},
+            /pgf/number format/1000 sep={}}
+%\usetikzlibrary{external}
+%\tikzexternalize
+%\tikzsetexternalprefix{tikz/}
+
+%% Siunitx
+\sisetup{exponent-product=\cdot, % Use \cdot instead of \times as replacement for 10-exponentials
+        output-complex-root=\ensuremath{i}, % Normal math-i instead of \mathrm{i},
+        group-separator = {}} % Don't separate thousands
+
+%% Biblatex
+\iftoggle{biblatexloaded}{
+    % Surname first
+    \DeclareNameAlias{sortname}{last-first}
+    \DeclareNameAlias{default}{last-first}
+
+    \urlstyle{sf}
+
+    % Separate multiple references with ;
+    \renewcommand\multicitedelim{\addsemicolon\space}
+}
+
+%% Minted
+\iftoggle{mintedloaded}{
+    % C
+    \newmintedfile{c}{fontfamily=tt,
+                        fontsize=\footnotesize,
+                        tabsize=4,
+                        numberblanklines=true,
+                        numbers=left,
+                        numbersep=5pt,
+                        breakautoindent=false,
+                        xleftmargin=0.7cm,} % \cfile{}
+
+    \newminted[ccodecap]{c}{fontfamily=tt,
+                            fontsize=\normalsize,
+                            tabsize=4,
+                            frame=lines,
+                            breaklines=true,
+                            breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+                            breakautoindent=true,} %\begin{ccodecap}
+    \newmintinline{c}{fontfamily=tt,
+                        breaklines=true,
+                        fontsize=\normalsize} %\cinline{}
+
+    % Shell
+    \newminted[shellcode]{shell-session}{fontfamily=tt,
+                                            fontsize=\normalsize,
+                                            tabsize=4,} %\begin{shellcode}
+
+    \newminted[shellcodecap]{shell-session}{fontfamily=tt,
+                                            fontsize=\normalsize,
+                                            tabsize=4,
+                                            frame=lines,
+                                            breaklines=true,
+                                            breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+                                            breakautoindent=true} %\begin{shellcodecap}
+    \newmint[shell]{shell-session}{fontfamily=tt,
+                                    fontsize=\normalsize,
+                                    frame=lines,
+                                    breaklines=true,
+                                    breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+                                    breakautoindent=true} % \shell{}
+    \newmintedfile[shellfile]{shell-session}{fontfamily=tt,
+                                                fontsize=\normalsize,
+                                                tabsize=4,
+                                                breakautoindent=false,} % \shellfile{}
+    \newmintinline[shellinline]{shell-session}{fontfamily=tt,
+                                                fontsize=\normalsize,
+                                                breaklines=true,
+                                                breakautoindent=false} % \shellinline{}
+    % MATLAB
+    \newmintedfile{matlab}{fontfamily=tt,
+                            fontsize=\footnotesize,
+                            tabsize=4,
+                            numberblanklines=true,
+                            numbers=left,
+                            numbersep=5pt,
+                            breakautoindent=false,
+                            xleftmargin=0.7cm,} % \matlabfile{}
+    \newmintedfile[matlabfileframe]{matlab}{fontfamily=tt,
+                                            fontsize=\footnotesize,
+                                            tabsize=4,
+                                            frame=lines,
+                                            numberblanklines=true,
+                                            numbers=left,
+                                            numbersep=5pt,
+                                            breakautoindent=false,
+                                            xleftmargin=0.7cm,} % \matlabfileframe{}
+
+
+    \newminted[mcodecap]{matlab}{fontfamily=tt,
+                                    fontsize=\normalsize,
+                                    tabsize=4,
+                                    frame=lines,
+                                    breaklines=true,
+                                    breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+                                    breakautoindent=true,} %\begin{mcodecap}
+    \newmintinline[minline]{matlab}{fontfamily=tt,
+                                    breaklines=true,
+                                    fontsize=\normalsize} %\minline{}
+
+    \SetupFloatingEnvironment{listing}{name=Code} % Shows "Code" in captions
+}
+
+%% Misc
+% Captions of floats
+\usepackage[margin=3ex,
+			font=small,
+			labelfont=bf,
+			labelsep=endash]{caption}
+
+% Links
+\hypersetup{colorlinks=true,
+			hidelinks}
+			
+			
+% Definitions of commands
+\newcommand{\mail}[1]{\href{mailto:#1}{\nolinkurl{#1}}} % Email addresses as links
+\newcommand{\pd}[0]{\partial} % Partial differential d
+\newcommand{\matr}[1]{#1} % Matrices
+\newcommand{\trps}[0]{\mathrm{T}} % Transpose of vector or matrices
+\DeclareMathOperator{\linspan}{span} % Span of spaces in linear algebra
+\newtheorem{theorem}{Theorem} % \begin{theorem}[Name of Theorem]
+\newcommand{\me}[0]{\mathrm{e}} % Exponential e
+
+% Redefine \left and \right in order to make them look nicer when used in functions
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% Folder with figures
+\graphicspath{./figs/}

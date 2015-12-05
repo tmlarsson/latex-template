@@ -1,3 +1,12 @@
+%% Beamer settings
+\usefonttheme[onlymath]{serif} % Correct math font in beamer
+\beamertemplatenavigationsymbolsempty % Removes buttons in presentation
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{bibliography item}{\insertbiblabel} % Get numeric references in the list of references instead of small figures
+
 %% Pgfplots
 \pgfplotsset{compat=newest,scaled ticks = false,
             tick label style={/pgf/number format/fixed},
@@ -124,14 +133,13 @@
 \newcommand{\matr}[1]{#1} % Matrices
 \newcommand{\trps}[0]{\mathrm{T}} % Transpose of vector or matrices
 \DeclareMathOperator{\linspan}{span} % Span of spaces in linear algebra
-\newtheorem{theorem}{Theorem} % \begin{theorem}[Name of Theorem]
 \newcommand{\me}[0]{\mathrm{e}} % Exponential e
 
-% Redefine \left och \right in order to make them look nicer when used in functions
+% Redefine \left and \right in order to make them look nicer when used in functions
 \let\originalleft\left
 \let\originalright\right
 \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
 \renewcommand{\right}{\aftergroup\egroup\originalright}
 
 % Folder with figures
-\graphicspath{{./figs/}}
+\graphicspath{./figs/}

@@ -101,13 +101,13 @@
     \section{Section}
         \label{sec:section}
     \clearpage
-    \section{References}
+    \iftoggle{biblatexloaded}{
+        \section{References}
         \label{sec:references}
-        \iftoggle{biblatexloaded}{
             \setcounter{biburllcpenalty}{9000}
             \setcounter{biburlucpenalty}{9000}
             \printbibliography[heading=none]
-        }
+    }
 
     \clearpage
     \begin{appendices}
