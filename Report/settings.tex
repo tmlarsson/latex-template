@@ -46,32 +46,32 @@
                         breaklines=true,
                         fontsize=\normalsize} %\cinline{}
 
-    % Shell
-    \newminted[shellcode]{shell-session}{fontfamily=tt,
+    % Bash
+    \newminted[bashcode]{bash}{fontfamily=tt,
                                             fontsize=\normalsize,
-                                            tabsize=4,} %\begin{shellcode}
+                                            tabsize=4,} %\begin{bashcode}
 
-    \newminted[shellcodecap]{shell-session}{fontfamily=tt,
+    \newminted[bashcodecap]{bash}{fontfamily=tt,
                                             fontsize=\normalsize,
                                             tabsize=4,
                                             frame=lines,
                                             breaklines=true,
                                             breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
-                                            breakautoindent=true} %\begin{shellcodecap}
-    \newmint[shell]{shell-session}{fontfamily=tt,
+                                            breakautoindent=true} %\begin{bashcodecap}
+    \newmint[bash]{bash}{fontfamily=tt,
                                     fontsize=\normalsize,
                                     frame=lines,
                                     breaklines=true,
                                     breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
-                                    breakautoindent=true} % \shell{}
-    \newmintedfile[shellfile]{shell-session}{fontfamily=tt,
+                                    breakautoindent=true} % \bash{}
+    \newmintedfile[bashfile]{bash}{fontfamily=tt,
                                                 fontsize=\normalsize,
                                                 tabsize=4,
-                                                breakautoindent=false,} % \shellfile{}
-    \newmintinline[shellinline]{shell-session}{fontfamily=tt,
+                                                breakautoindent=false,} % \bashfile{}
+    \newmintinline[bashinline]{bash}{fontfamily=tt,
                                                 fontsize=\normalsize,
                                                 breaklines=true,
-                                                breakautoindent=false} % \shellinline{}
+                                                breakautoindent=false} % \bashinline{}
     % MATLAB
     \newmintedfile{matlab}{fontfamily=tt,
                             fontsize=\footnotesize,
@@ -99,6 +99,13 @@
                                     breaklines=true,
                                     breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
                                     breakautoindent=true,} %\begin{mcodecap}
+
+    \newminted[mcode]{matlab}{fontfamily=tt,
+                                    tabsize=4,
+                                    breaklines=true,
+                                    breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+                                    breakautoindent=true,} %\begin{mcode}
+
     \newmintinline[minline]{matlab}{fontfamily=tt,
                                     breaklines=true,
                                     fontsize=\normalsize} %\minline{}
