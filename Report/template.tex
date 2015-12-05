@@ -58,13 +58,15 @@
 
 \begin{document}
     \title{Name of Document}
-    \author{Author Name (\mail{e-mail@address.com})}
+
+    \author{Author Name\texorpdfstring{ (\mail{e-mail@address.com})}{}} % \texorpdfstring needed so that e-mail adress is not added to pdfinfo
     \date{\today}
 
     % Author and title as "variables" for use in headers
     \makeatletter
         \let\headerauthor\@author
         \let\headertitle\@title
+        \hypersetup{pdftitle={\@title},pdfauthor={\@author}, pdfcreator={LaTeX}}
     \makeatother
 
     \begin{titlepage}
