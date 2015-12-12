@@ -3,12 +3,12 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{luainputenc}
 \usepackage[english]{babel}
-\usepackage{geometry}               % Page geometry
+\usepackage[headheight=35pt]{geometry}  % Page geometry
 \usepackage{graphicx,
             epstopdf,
             float,
-            subcaption}             % Figures
-\usepackage[section]{placeins}      % Gives \FloatBarrier
+            subcaption}                 % Figures
+\usepackage[section]{placeins}          % Gives \FloatBarrier
 \usepackage{amsmath,
             amssymb,
             amsthm,
@@ -17,32 +17,31 @@
             dsfont,
             esint,
             mathtools,
-            tensor}                 % Mathematics
+            tensor}                     % Mathematics
 \usepackage{physics,
-            siunitx}                % Physics
-\usepackage{enumerate}              % Lists
-\usepackage{fancyhdr}               % Header and footer
+            siunitx}                    % Physics
+\usepackage{enumerate}                  % Lists
+\usepackage{fancyhdr}                   % Header and footer
 \usepackage{booktabs,
-            multirow}               % Tables
-\usepackage{appendix}               % Appendices
-\usepackage{hyperref}               % Links
-\usepackage{csquotes}               % Quotes. For biblatex
-\usepackage{color}                  % Colour
-\usepackage{pdflscape}              % Rotate the whole document
-\usepackage{multicol}               % Multiple columns on one page
-\usepackage{pgfplots}               % Create figures
-\usepackage{lmodern}                % More options for fonts
-\usepackage{newfloat}               % For minted
-%\usepackage[newfloat]{minted}       % Insert code
+            multirow}                   % Tables
+\usepackage{appendix}                   % Appendices
+\usepackage{hyperref}                   % Links
+\usepackage{csquotes}                   % Quotes. For biblatex
+\usepackage{color}                      % Colour
+\usepackage{pdflscape}                  % Rotate the whole document
+\usepackage{multicol}                   % Multiple columns on one page
+\usepackage{pgfplots}                   % Create figures
+\usepackage{lmodern}                    % More options for fonts
+\usepackage{newfloat}                   % For minted
+%\usepackage[newfloat]{minted}          % Insert code
 %\usepackage[backend=biber,
-%            style=numeric-comp,
-%            language=auto,
-%            firstinits = false,
-%            alldates=iso8601,
-%            sortcites=true,
-%            hyperref=true,
-%            url=true,
-%            isbn=true]{biblatex}
+%           style=numeric-comp,
+%           language=auto,
+%           firstinits=false,
+%           alldates=iso8601,
+%           sortcites=true,
+%           sorting=none,
+%           hyperref=true]{biblatex}
 
 \makeatletter
     \newtoggle{biblatexloaded}
@@ -75,7 +74,6 @@
         \pagenumbering{gobble}
         \maketitle 
         \thispagestyle{fancy}
-        \headheight 35pt
         \rhead{\small\today}
         \lhead{\small Department or Institution\\
                 Name of University}
@@ -96,7 +94,6 @@
     \clearpage
     \hypersetup{pageanchor=true} % Fixes a problem with hyperref complaining about pagenumbering on the title page
     \pagestyle{fancy}
-    \headheight 36pt 
     \rhead{\small \headertitle\\\today}
     \lhead{\small \headerauthor}
     \cfoot{\thepage}
