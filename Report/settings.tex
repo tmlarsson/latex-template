@@ -8,6 +8,18 @@
 %\tikzexternalize
 %\tikzsetexternalprefix{tikz/}
 
+%% Tocloft
+% Set the name of figures and tables in the list of figures and tables
+\newlength{\fignamelength}
+\settowidth{\tabnamelength}{\figurename}
+\addtolength{\cftfignumwidth}{\fignamelength}
+\renewcommand{\cftfigpresnum}{\figurename~}
+
+\newlength{\tabnamelength}
+\settowidth{\fignamelength}{\tablename}
+\addtolength{\cfttabnumwidth}{\tabnamelength}
+\renewcommand{\cfttabpresnum}{\tablename~}
+
 %% Siunitx
 \sisetup{exponent-product=\cdot, % Use \cdot instead of \times as replacement for 10-exponentials
         output-complex-root=\ensuremath{i}, % Normal math-i instead of \mathrm{i},
