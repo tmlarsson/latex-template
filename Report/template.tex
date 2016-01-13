@@ -69,7 +69,7 @@
     \makeatother
 
     \begin{titlepage}
-        \hypersetup{pageanchor=false} % Fixes a problem with hyperref complaining about pagenumbering on the title page
+        \hypersetup{pageanchor=false} % Disable pageanchors in hyperref for un-numbered pages
         \pagenumbering{gobble}
         \maketitle 
         \thispagestyle{fancy}
@@ -91,13 +91,16 @@
         \end{table}
     \end{titlepage}
     \clearpage
-    \hypersetup{pageanchor=true} % Fixes a problem with hyperref complaining about pagenumbering on the title page
+    \hypersetup{pageanchor=false} % Disable pageanchors in hyperref for un-numbered pages
     \pagestyle{fancy}
     \rhead{\small \headertitle\\\today}
     \lhead{\small \headerauthor}
     \cfoot{\thepage}
     \tableofcontents
+    \listoffigures
+    \listoftables
     \clearpage
+    \hypersetup{pageanchor=true} % Enable pageanchors again
     \pagenumbering{arabic}
     \section{Section}
         \label{sec:section}
