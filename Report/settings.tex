@@ -11,12 +11,12 @@
 %% Tocloft
 % Set the name of figures and tables in the list of figures and tables
 \newlength{\fignamelength}
-\settowidth{\tabnamelength}{\figurename}
+\settowidth{\fignamelength}{\tablename}
 \addtolength{\cftfignumwidth}{\fignamelength}
 \renewcommand{\cftfigpresnum}{\figurename~}
 
 \newlength{\tabnamelength}
-\settowidth{\fignamelength}{\tablename}
+\settowidth{\tabnamelength}{\figurename}
 \addtolength{\cfttabnumwidth}{\tabnamelength}
 \renewcommand{\cfttabpresnum}{\tablename~}
 
