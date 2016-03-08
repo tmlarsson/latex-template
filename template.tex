@@ -42,6 +42,24 @@
 %            url=true,
 %            isbn=true]{biblatex}
 
+%%%%%%%%%%%
+% Counters efter section
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{tables}{section}
+
+%%%%%%%%%%%
+% Define theorems
+\newtheorem{sats}{Sats}[subsection]
+\newtheorem{lemma}[sats]{Lemma}
+\theoremstyle{definition}
+\newtheorem{defi}[sats]{Definition}
+\newtheorem{exempel}[sats]{Exempel}
+\newtheorem{teorem}[sats]{Teorem}
+\theoremstyle{remark}
+\newtheorem*{anm}{Anmärkning}
+%%%%%%%%%%%
+
 \makeatletter
     \newtoggle{biblatexloaded}
     \newtoggle{mintedloaded}
