@@ -1,4 +1,4 @@
-A copy of the template created by `@kwlg` with some more macros added for mathematics. Also the repository which `mktex` points to.
+A copy of the template created by @kwlg with some more macros added for mathematics. Also the repository which `mktex` points to.
 
 # latex-template
 A simple report and presentation template for LaTeX to be compiled with luaLaTeX.
