@@ -1,14 +1,15 @@
 \documentclass[a4paper, 12pt]{article}
 
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
-\usepackage{geometry}               % Page geometry
+\usepackage[utf8]{luainputenc}
+\usepackage[british]{babel}
+\usepackage{tocloft}                    % Better table of contents
+\usepackage[headheight=35pt]{geometry}  % Page geometry
 \usepackage{graphicx,
             epstopdf,
             float,
-            subcaption}             % Figures
-\usepackage[section]{placeins}      % Gives \FloatBarrier
+            subcaption}                 % Figures
+\usepackage[section]{placeins}          % Gives \FloatBarrier
 \usepackage{amsmath,
             amssymb,
             amsthm,
@@ -16,31 +17,32 @@
             mathrsfs,
             dsfont,
             esint,
-            mathtools}              % Mathematics
-\usepackage{physics}    		    % Physics
-\usepackage{enumerate}              % Lists
-\usepackage{fancyhdr}               % Header and footer
+            mathtools,
+            tensor}                     % Mathematics
+\usepackage{physics,
+            siunitx}                    % Physics
+\usepackage{enumerate}                  % Lists
+\usepackage{fancyhdr}                   % Header and footer
 \usepackage{booktabs,
-            multirow}               % Tables
-\usepackage{appendix}               % Appendices
-\usepackage{hyperref}               % Links
-\usepackage{csquotes}               % Quotes. For biblatex
-\usepackage{color}                  % Colour
-\usepackage{pdflscape}              % Rotate the whole document
-\usepackage{multicol}               % Multiple columns on one page
-\usepackage{pgfplots}               % Create figures
-\usepackage{lmodern}                % More options for fonts
-\usepackage{newfloat}               % For minted
-%\usepackage[newfloat]{minted}       % Insert code
+            multirow}                   % Tables
+\usepackage{appendix}                   % Appendices
+\usepackage{hyperref}                   % Links
+\usepackage[capitalise,
+            noabbrev]{cleveref}         % Automatic references
+\usepackage{csquotes}                   % Quotes. For biblatex
+\usepackage{color}                      % Colour
+\usepackage{pdflscape}                  % Rotate the whole document
+\usepackage{multicol}                   % Multiple columns on one page
+\usepackage{pgfplots}                   % Create figures
+\usepackage{lmodern}                    % More options for fonts
+\usepackage{newfloat}                   % For minted
+%\usepackage[newfloat]{minted}          % Insert code
 %\usepackage[backend=biber,
-%            style=numeric-comp,
-%            language=auto,
-%            firstinits = false,
-%            alldates=iso8601,
-%            sortcites=true,
-%            hyperref=true,
-%            url=true,
-%            isbn=true]{biblatex}
+%           style=ieee,
+%           language=auto,
+%           sortcites=true,
+%           url=true,
+%           hyperref=true]{biblatex}
 
 %%%%%%%%%%%
 % Counters efter section
@@ -76,25 +78,28 @@
 
 \begin{document}
     \title{Name of Document}
-    \author{Author Name (\mail{e-mail@address.com})}
+
+    \author{Author Name\texorpdfstring{ (\mail{e-mail@address.com})}{}} % \texorpdfstring needed so that e-mail adress is not added to pdfinfo
     \date{\today}
 
     % Author and title as "variables" for use in headers
     \makeatletter
         \let\headerauthor\@author
         \let\headertitle\@title
+        \hypersetup{pdftitle={\@title},pdfauthor={\@author}, pdfcreator={LaTeX}}
     \makeatother
 
     \begin{titlepage}
-        \hypersetup{pageanchor=false} % Fixes a problem with hyperref complaining about pagenumbering on the title page
+        \hypersetup{pageanchor=false} % Disable pageanchors in hyperref for un-numbered pages
         \pagenumbering{gobble}
         \maketitle 
         \thispagestyle{fancy}
-        \headheight 35pt
         \rhead{\small\today}
         \lhead{\small Department or Institution\\
                 Name of University}
-		
+        \begin{abstract}
+            \noindent % Remove the first indentation added by the abstract environment
+        \end{abstract}
         \begin{table}[b]	
             \begin{center}
                 \begin{tabular}{rl}
@@ -107,25 +112,27 @@
         \end{table}
     \end{titlepage}
     \clearpage
-    \hypersetup{pageanchor=true} % Fixes a problem with hyperref complaining about pagenumbering on the title page
+    \hypersetup{pageanchor=false} % Disable pageanchors in hyperref for un-numbered pages
     \pagestyle{fancy}
-    \headheight 36pt 
     \rhead{\small \headertitle\\\today}
     \lhead{\small \headerauthor}
     \cfoot{\thepage}
     \tableofcontents
+    \listoffigures
+    \listoftables
     \clearpage
+    \hypersetup{pageanchor=true} % Enable pageanchors again
     \pagenumbering{arabic}
     \section{Section}
         \label{sec:section}
     \clearpage
-    \section{References}
+    \iftoggle{biblatexloaded}{
+        \section{References}
         \label{sec:references}
-        \iftoggle{biblatexloaded}{
             \setcounter{biburllcpenalty}{9000}
             \setcounter{biburlucpenalty}{9000}
             \printbibliography[heading=none]
-        }
+    }
 
     \clearpage
     \begin{appendices}

@@ -1,6 +1,8 @@
 # latex-template
-A simple template for LaTeX. By default, the template uses the package minted (available at https://github.com/gpoore/minted), which requires pdfLaTeX to be compiled with -shell-escape flag. Please be aware of what risks the usage of this flag implies.
+A simple report and presentation template for LaTeX to be compiled with luaLaTeX.
 
-The template also uses the package biblatex and biber as its backend. If you want to use biblatex, please first compile pdfLaTeX, then biber and then pdfLaTeX once more.
+The template makes use of `tikzexternalize` and the package `minted` (available at https://github.com/gpoore/minted). These are, however, not enabled by default but can be enabled by removing the comments in the beginning of the lines where the externalization is called and the package is loaded. The choice not to load these by default was made because they require the document to be compiled with the `shell-escape` flag. Please be aware of that risks the usage of this flag could imply.
 
-In order to compile, the script mktex, maintained by @tmlarsson, may be used. It is now available at https://github.com/tmlarsson/mktex.
+The template also uses the package biblatex and biber as its backend. If you want to use biblatex, please first compile luaLaTeX, then biber and then luaLaTeX once more.
+
+In order to compile, the script `mktex`, maintained by @tmlarsson, may be used. It is now available at https://github.com/tmlarsson/mktex.

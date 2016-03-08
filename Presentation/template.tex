@@ -1,0 +1,79 @@
+\documentclass[t, 12pt]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{luainputenc}
+\usepackage[british]{babel}
+\usepackage{geometry}               % Page geometry
+\usepackage{graphicx,
+            epstopdf,
+            float,
+            subcaption}             % Figures
+\usepackage[section]{placeins}      % Gives \FloatBarrier
+\usepackage{amsmath,
+            amssymb,
+            amsthm,
+            amsfonts,
+            mathrsfs,
+            dsfont,
+            esint,
+            mathtools}              % Mathematics
+\usepackage{physics,
+            siunitx}                % Physics
+\usepackage{enumerate}              % Lists
+\usepackage{fancyhdr}               % Header and footer
+\usepackage{booktabs,
+            multirow}               % Tables
+\usepackage{appendix}               % Appendices
+\usepackage{hyperref}               % Links
+\usepackage[capitalise,
+            noabbrev]{cleveref}     % Automatic references
+\usepackage{csquotes}               % Quotes. For biblatex
+\usepackage{color}                  % Colour
+\usepackage{pdflscape}              % Rotate the whole document
+\usepackage{multicol}               % Multiple columns on one page
+\usepackage{pgfplots}               % Create figures
+\usepackage{lmodern}                % More options for fonts
+\usepackage{newfloat}               % For minted
+%\usepackage[newfloat]{minted}       % Insert code
+%\usepackage[backend=biber,
+%            style=numeric-comp,
+%            language=auto,
+%            firstinits = false,
+%            alldates=iso8601,
+%            sortcites=true,
+%            hyperref=true,
+%            url=true,
+%            isbn=true]{biblatex}
+
+\makeatletter
+    \newtoggle{biblatexloaded}
+    \newtoggle{mintedloaded}
+    \@ifpackageloaded{biblatex}{\toggletrue{biblatexloaded}}{\togglefalse{biblatexloaded}}
+    \@ifpackageloaded{minted}{\toggletrue{mintedloaded}}{\togglefalse{mintedloaded}}
+\makeatother
+
+\iftoggle{biblatexloaded}{
+    \addbibresource{refs.bib}       % File with bibliography database
+}
+
+\input{settings.tex}                % File with settings
+
+\title[Short Title]{Long Title of Presentation}
+\author[Author Name in Footer]{Author Name\texorpdfstring{\\ \mail{e-mail@address.com}}{}} %\texorpdfstring needed for the pdf info
+\institute[Short Name]{Long Name of University}
+\date{\today}
+
+\begin{document}
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    \iftoggle{biblatexloaded}{
+        \begin{frame}[allowframebreaks] % Allow frame breaks if long list of references
+            \setcounter{biburllcpenalty}{9000}
+            \setcounter{biburlucpenalty}{9000}
+            \printbibliography[heading=none]
+        \end{frame}
+    }
+
+\end{document}
