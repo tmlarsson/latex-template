@@ -1,13 +1,23 @@
-% !TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper, 12pt]{article}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{luainputenc}
 \usepackage[british]{babel}
-\usepackage{tocloft}                    % Better table of contents
+\usepackage[titles]{tocloft}            % Better table of contents
+>>>>>>> upstream/master
 \usepackage[headheight=35pt]{geometry}  % Page geometry
 \usepackage{graphicx,
             epstopdf,
             float,
             subcaption}                 % Figures
+<<<<<<< HEAD
+=======
+\usepackage[margin=3ex,
+            font=small,
+            labelfont=bf,
+            labelsep=endash]{caption}
+>>>>>>> upstream/master
 \usepackage[section]{placeins}          % Gives \FloatBarrier
 \usepackage{amsmath,
             amssymb,
@@ -59,11 +69,6 @@
     \@ifpackageloaded{minted}{\toggletrue{mintedloaded}}{\togglefalse{mintedloaded}}
 \makeatother
 
-\iftoggle{biblatexloaded}{
-    \addbibresource{refs.bib}       % File with bibliography database
-}
-
-
 %% Cleveref
 \crefname{listing}{Code}{Codes} % Match with minted caption
 
@@ -95,7 +100,11 @@
         group-separator = {}} % Don't separate thousands
 
 %% Biblatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%% Biblatex %%%%%%%%%%%%%%%
 \iftoggle{biblatexloaded}{
+    \addbibresource{refs.bib} % File with bibliography database
     % Surname first
     \DeclareNameAlias{sortname}{last-first}
     \DeclareNameAlias{default}{last-first}
@@ -103,107 +112,135 @@
     \urlstyle{sf}
 }
 
-%% Minted
+%%%%%%%%%%%%%%% Cleveref %%%%%%%%%%%%%%%
+\crefname{listing}{Code}{Codes} % Match with minted caption
+
+%%%%%%%%%%%%%%% Minted %%%%%%%%%%%%%%%
 \iftoggle{mintedloaded}{
     % C
     \newmintedfile{c}{fontfamily=tt,
-                        fontsize=\footnotesize,
-                        tabsize=4,
-                        numberblanklines=true,
-                        numbers=left,
-                        numbersep=5pt,
-                        breakautoindent=false,
-                        xleftmargin=0.7cm,} % \cfile{}
+        fontsize=\footnotesize,
+        tabsize=4,
+        numberblanklines=true,
+        numbers=left,
+        numbersep=5pt,
+        breakautoindent=false,
+        xleftmargin=0.7cm,} % \cfile{}
 
     \newminted[ccodecap]{c}{fontfamily=tt,
-                            fontsize=\normalsize,
-                            tabsize=4,
-                            frame=lines,
-                            breaklines=true,
-                            breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
-                            breakautoindent=true,} %\begin{ccodecap}
+        fontsize=\normalsize,
+        tabsize=4,
+        frame=lines,
+        breaklines=true,
+        breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+        breakautoindent=true,} %\begin{ccodecap}
+
     \newmintinline{c}{fontfamily=tt,
-                        breaklines=true,
-                        fontsize=\normalsize} %\cinline{}
+        breaklines=true,
+        fontsize=\normalsize} %\cinline{}
 
     % Bash
     \newminted[bashcode]{bash}{fontfamily=tt,
-                                            fontsize=\normalsize,
-                                            tabsize=4,} %\begin{bashcode}
+        fontsize=\normalsize,
+        tabsize=4,} %\begin{bashcode}
 
     \newminted[bashcodecap]{bash}{fontfamily=tt,
-                                            fontsize=\normalsize,
-                                            tabsize=4,
-                                            frame=lines,
-                                            breaklines=true,
-                                            breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
-                                            breakautoindent=true} %\begin{bashcodecap}
+        fontsize=\normalsize,
+        tabsize=4,
+        frame=lines,
+        breaklines=true,
+        breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+        breakautoindent=true} %\begin{bashcodecap}
+
     \newmint[bash]{bash}{fontfamily=tt,
-                                    fontsize=\normalsize,
-                                    frame=lines,
-                                    breaklines=true,
-                                    breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
-                                    breakautoindent=true} % \bash{}
+        fontsize=\normalsize,
+        frame=lines,
+        breaklines=true,
+        breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+        breakautoindent=true} % \bash{}
+
     \newmintedfile[bashfile]{bash}{fontfamily=tt,
-                                                fontsize=\normalsize,
-                                                tabsize=4,
-                                                breakautoindent=false,} % \bashfile{}
+        fontsize=\normalsize,
+        tabsize=4,
+        breakautoindent=false,} % \bashfile{}
+
     \newmintinline[bashinline]{bash}{fontfamily=tt,
-                                                fontsize=\normalsize,
-                                                breaklines=true,
-                                                breakautoindent=false} % \bashinline{}
+        fontsize=\normalsize,
+        breaklines=true,
+        breakautoindent=false} % \bashinline{}
+
     % MATLAB
     \newmintedfile{matlab}{fontfamily=tt,
-                            fontsize=\footnotesize,
-                            tabsize=4,
-                            numberblanklines=true,
-                            numbers=left,
-                            numbersep=5pt,
-                            breakautoindent=false,
-                            xleftmargin=0.7cm,} % \matlabfile{}
-    \newmintedfile[matlabfileframe]{matlab}{fontfamily=tt,
-                                            fontsize=\footnotesize,
-                                            tabsize=4,
-                                            frame=lines,
-                                            numberblanklines=true,
-                                            numbers=left,
-                                            numbersep=5pt,
-                                            breakautoindent=false,
-                                            xleftmargin=0.7cm,} % \matlabfileframe{}
+        fontsize=\footnotesize,
+        tabsize=4,
+        numberblanklines=true,
+        numbers=left,
+        numbersep=5pt,
+        breakautoindent=false,
+        xleftmargin=0.7cm,} % \matlabfile{}
 
+    \newmintedfile[matlabfileframe]{matlab}{fontfamily=tt,
+        fontsize=\footnotesize,
+        tabsize=4,
+        frame=lines,
+        numberblanklines=true,
+        numbers=left,
+        numbersep=5pt,
+        breakautoindent=false,
+        xleftmargin=0.7cm,} % \matlabfileframe{}
 
     \newminted[mcodecap]{matlab}{fontfamily=tt,
-                                    fontsize=\normalsize,
-                                    tabsize=4,
-                                    frame=lines,
-                                    breaklines=true,
-                                    breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
-                                    breakautoindent=true,} %\begin{mcodecap}
+        fontsize=\normalsize,
+        tabsize=4,
+        frame=lines,
+        breaklines=true,
+        breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+        breakautoindent=true,} %\begin{mcodecap}
 
     \newminted[mcode]{matlab}{fontfamily=tt,
-                                    tabsize=4,
-                                    breaklines=true,
-                                    breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
-                                    breakautoindent=true,} %\begin{mcode}
+        tabsize=4,
+        breaklines=true,
+        breaksymbolleft=\tiny\ensuremath{\hookrightarrow},
+        breakautoindent=true,} %\begin{mcode}
 
     \newmintinline[minline]{matlab}{fontfamily=tt,
-                                    breaklines=true,
-                                    fontsize=\normalsize} %\minline{}
+        breaklines=true,
+        fontsize=\normalsize} %\minline{}
 
     \SetupFloatingEnvironment{listing}{name=Code} % Shows "Code" in captions
 }
 
-%% Misc
-% Captions of floats
-\usepackage[margin=3ex,
-			font=small,
-			labelfont=bf,
-			labelsep=endash]{caption}
+%%%%%%%%%%%%%%% Pgfplots %%%%%%%%%%%%%%%
+\pgfplotsset{compat=newest,scaled ticks = false,
+    tick label style={/pgf/number format/fixed},
+    /pgf/number format/1000 sep={}}
 
+\usetikzlibrary{spy}
+%\usetikzlibrary{external}
+%\tikzexternalize
+%\tikzsetexternalprefix{tikz/}
+
+%%%%%%%%%%%%%%% Siunitx %%%%%%%%%%%%%%%
+\sisetup{exponent-product=\cdot, % Use \cdot instead of \times as replacement for 10-exponentials
+    output-complex-root=\ensuremath{\cplex},
+    group-separator = {}} % Don't separate thousands
+
+%%%%%%%%%%%%%%% Tocloft %%%%%%%%%%%%%%%
+% Set the name of figures and tables in the list of figures and tables
+\newlength{\fignamelength}
+\settowidth{\fignamelength}{\tablename}
+\addtolength{\cftfignumwidth}{\fignamelength}
+\renewcommand{\cftfigpresnum}{\figurename~}
+
+\newlength{\tabnamelength}
+\settowidth{\tabnamelength}{\figurename}
+\addtolength{\cfttabnumwidth}{\tabnamelength}
+\renewcommand{\cfttabpresnum}{\tablename~}
+
+%%%%%%%%%%%%%%% Misc %%%%%%%%%%%%%%%
 % Links
 \hypersetup{colorlinks=true,
-			hidelinks}
-			
+    hidelinks}
 			
 % Definitions of commands
 \newcommand{\mail}[1]{\href{mailto:#1}{\nolinkurl{#1}}} % Email addresses as links
@@ -212,7 +249,8 @@
 \newcommand{\trps}[0]{\mathrm{T}} % Transpose of vector or matrices
 \DeclareMathOperator{\linspan}{span} % Span of spaces in linear algebra
 \newtheorem{theorem}{Theorem} % \begin{theorem}[Name of Theorem]
-\renewcommand{\exp}[1]{\mathrm{e}^{#1}} % Exponential e
+\newcommand{\me}[1]{\mathrm{e}^{#1}} % Exponential e
+\newcommand{\cplex}[0]{\mathrm{i}} % Imaginary i
 
 % Redefine \left and \right in order to make them look nicer when used in functions
 \let\originalleft\left

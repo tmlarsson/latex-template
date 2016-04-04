@@ -1,25 +1,21 @@
-% !TEX encoding = UTF-8 Unicode
-\documentclass[a4paper, 12pt]{article}
+\input{settings.tex} % Preamble and settings
 
-\input{settings.tex}                % File with settings
+\title{Name of Document}
+\author{Author Name\texorpdfstring{ (\mail{e-mail@address.com})}{}} % \texorpdfstring needed so that e-mail adress is not added to pdfinfo
+\date{\today}
+
+% Author and title as "variables" for use in headers
+\makeatletter
+    \let\headerauthor\@author
+    \let\headertitle\@title
+    \hypersetup{pdftitle={\@title},pdfauthor={\@author}, pdfcreator={LaTeX}}
+\makeatother
 
 \begin{document}
-    \title{Name of Document}
-
-    \author{Author Name\texorpdfstring{ (\mail{e-mail@address.com})}{}} % \texorpdfstring needed so that e-mail adress is not added to pdfinfo
-    \date{\today}
-
-    % Author and title as "variables" for use in headers
-    \makeatletter
-        \let\headerauthor\@author
-        \let\headertitle\@title
-        \hypersetup{pdftitle={\@title},pdfauthor={\@author}, pdfcreator={LaTeX}}
-    \makeatother
-
     \begin{titlepage}
         \hypersetup{pageanchor=false} % Disable pageanchors in hyperref for un-numbered pages
         \pagenumbering{gobble}
-        \maketitle 
+        \maketitle
         \thispagestyle{fancy}
         \rhead{\small\today}
         \lhead{\small Department or Institution\\
@@ -39,6 +35,7 @@
         \end{table}
     \end{titlepage}
     \clearpage
+
     \hypersetup{pageanchor=false} % Disable pageanchors in hyperref for un-numbered pages
     \pagestyle{fancy}
     \rhead{\small \headertitle\\\today}
@@ -48,12 +45,14 @@
     \listoffigures
     \listoftables
     \clearpage
+
     \hypersetup{pageanchor=true} % Enable pageanchors again
     \pagenumbering{arabic}
     \section{Section}
         \label{sec:section}
-    \clearpage
+
     \iftoggle{biblatexloaded}{
+        \clearpage
         \section{References}
         \label{sec:references}
             \setcounter{biburllcpenalty}{9000}
