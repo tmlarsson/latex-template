@@ -30,6 +30,7 @@
 \usepackage{booktabs,
             multirow}                   % Tables
 \usepackage{appendix}                   % Appendices
+\usepackage{hyperref}                   % Links
 \usepackage[capitalise,
             noabbrev]{cleveref}         % Automatic references
 \usepackage{csquotes}                   % Quotes. For biblatex
@@ -39,7 +40,6 @@
 \usepackage{pgfplots}                   % Create figures
 \usepackage{lmodern}                    % More options for fonts
 \usepackage{newfloat}                   % For minted
-\usepackage{etoolbox}
 %\usepackage[newfloat]{minted}          % Insert code
 %\usepackage[backend=biber,
 %           style=ieee,
@@ -170,10 +170,6 @@
     tick label style={/pgf/number format/fixed},
     /pgf/number format/1000 sep={}}
 
-% Use e.g. \tikzwidth in width=\tikzwidth in pgfplots
-\def\tikzwidth{1\textwidth}
-\def\tikzheight{0.4\textwidth}
-
 \usetikzlibrary{spy}
 %\usetikzlibrary{external}
 %\tikzexternalize
@@ -197,7 +193,12 @@
 \renewcommand{\cfttabpresnum}{\tablename~}
 
 %%%%%%%%%%%%%%% Misc %%%%%%%%%%%%%%%
+% Links
+\hypersetup{colorlinks=true,
+    hidelinks}
+			
 % Definitions of commands
+\newcommand{\mail}[1]{\href{mailto:#1}{\nolinkurl{#1}}} % Email addresses as links
 \newcommand{\pd}[0]{\partial} % Partial differential d
 \newcommand{\matr}[1]{#1} % Matrices
 \newcommand{\trps}[0]{\mathrm{T}} % Transpose of vector or matrices
