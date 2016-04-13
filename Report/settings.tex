@@ -211,6 +211,10 @@
     tick label style={/pgf/number format/fixed},
     /pgf/number format/1000 sep={}}
 
+% Use e.g. \tikzwidth in width=\tikzwidth in pgfplots
+\def\tikzwidth{1\textwidth}
+\def\tikzheight{0.4\textwidth}
+
 \usetikzlibrary{spy}
 %\usetikzlibrary{external}
 %\tikzexternalize
@@ -224,12 +228,12 @@
 %%%%%%%%%%%%%%% Tocloft %%%%%%%%%%%%%%%
 % Set the name of figures and tables in the list of figures and tables
 \newlength{\fignamelength}
-\settowidth{\fignamelength}{\tablename}
+\settowidth{\fignamelength}{\figurename}
 \addtolength{\cftfignumwidth}{\fignamelength}
 \renewcommand{\cftfigpresnum}{\figurename~}
 
 \newlength{\tabnamelength}
-\settowidth{\tabnamelength}{\figurename}
+\settowidth{\tabnamelength}{\tablename}
 \addtolength{\cfttabnumwidth}{\tabnamelength}
 \renewcommand{\cfttabpresnum}{\tablename~}
 
